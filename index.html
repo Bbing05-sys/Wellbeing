@@ -178,8 +178,7 @@
 </div>
 
 <script>
-const WORKER_AI     = "https://round-limit-49ea.dcotter05.workers.dev/ai";
-const WORKER_SHEETS = "https://round-limit-49ea.dcotter05.workers.dev/sheets";
+const WORKER = "https://round-limit-49ea.dcotter05.workers.dev/";
 const TODAY   = new Date().toISOString().slice(0,10);
 
 let history = [], entries = { nutrition: [], wellbeing: [] }, sending = false, API_KEY = '';
@@ -252,8 +251,7 @@ function addMsg(role, text, thinking=false) {
 
 // Worker calls
 async function workerPost(data) {
-  const url = data.route === 'anthropic' ? WORKER_AI : WORKER_SHEETS;
-  const res = await fetch(url, {
+  const res = await fetch(WORKER, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
